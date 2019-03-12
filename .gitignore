@@ -5,9 +5,7 @@ _config.yml
 /.idea
 CotacaoAtualBolsa.py
 dados_basicos_pb.db
-dados_basicos_pb.db
 Dah.py
-dados_basicos_pb.db
 teste1.py
 *.iml
 .idea/Investimentos.iml
@@ -16,10 +14,5 @@ __pycache__/Carteira.cpython-36.pyc
 *.txt
 EstudoHistFund.py
 .idea/workspace.xml
-dados_basicos_pb.db
-cdi_atualiza.txt
-cdi_atualiza.txt
 cdi_atualiza.txt
 temp.py
-dados_basicos_pb.db
-dados_basicos_pb.db
