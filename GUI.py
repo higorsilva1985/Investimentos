@@ -30,9 +30,9 @@ matplotlib.use('TkAgg')
 
 pd.core.common.is_list_like = pd.api.types.is_list_like
 
-from pandas_datareader import data
-import fix_yahoo_finance as yf
-yf.pdr_override()
+# from pandas_datareader import data
+# import fix_yahoo_finance as yf
+# yf.pdr_override()
 
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
