@@ -16,3 +16,5 @@ EstudoHistFund.py
 .idea/workspace.xml
 cdi_atualiza.txt
 temp.py
+*.txt
+*.db

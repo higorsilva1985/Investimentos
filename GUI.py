@@ -811,7 +811,7 @@ class MainGUI:
         self.cria_widgets()
 
         #FUNÇÃO PARA OS GRÁFICOS
-        self.graficos()
+        # self.graficos()
 
         # FUNÇÃO CRIA PESTE BLACK
         self.peste_black()
@@ -1761,162 +1761,162 @@ class MainGUI:
 
     # --------------- FUNÇÕES PARA A ABA GRÁFICOS ----------
 
-    def graficos(self):
+    # def graficos(self):
 
-        #LABEL FRAMES
-        self.lf_select = ttk.LabelFrame(self.tab_graf, text="SELEÇÃO DA AÇÃO")
-        self.lf_textos = ttk.LabelFrame(self.tab_graf, text="INSTRUÇÕES DE USO")
+    #     #LABEL FRAMES
+    #     self.lf_select = ttk.LabelFrame(self.tab_graf, text="SELEÇÃO DA AÇÃO")
+    #     self.lf_textos = ttk.LabelFrame(self.tab_graf, text="INSTRUÇÕES DE USO")
 
-        #TEXTOS
-        self.instru = """
-        - O programa lê arquivos de extensão .db na pasta "base", que contém o histórico de cotações da Bovespa;\n
-        - Para atualizar a base de dados, deve-se baixar o arquivo .zip do ano atual no site da Bovespa, extraí-lo
-        na pasta "base" e rodar o arquivos "script_atualiza_base.py";\n
-        - Alternativamente, é possível utilizar o Yahoo Finance para baixar os dados, marcando o checkbox "yahoo".
-        Essa opção demanda conexão com a internet.
-        """
-        self.lb_select1 = ttk.Label(self.lf_select, text="Selecione a ação:")
-        self.lb_select2 = ttk.Label(self.lf_select, text="Data inicial:")
-        self.lb_select3 = ttk.Label(self.lf_select, text="Data final:")
-        self.lb_select4 = ttk.Label(self.lf_select, text="Médias móveis exponenciais:")
-        self.lb_select5 = ttk.Label(self.lf_textos, text=self.instru)
+    #     #TEXTOS
+    #     self.instru = """
+    #     - O programa lê arquivos de extensão .db na pasta "base", que contém o histórico de cotações da Bovespa;\n
+    #     - Para atualizar a base de dados, deve-se baixar o arquivo .zip do ano atual no site da Bovespa, extraí-lo
+    #     na pasta "base" e rodar o arquivos "script_atualiza_base.py";\n
+    #     - Alternativamente, é possível utilizar o Yahoo Finance para baixar os dados, marcando o checkbox "yahoo".
+    #     Essa opção demanda conexão com a internet.
+    #     """
+    #     self.lb_select1 = ttk.Label(self.lf_select, text="Selecione a ação:")
+    #     self.lb_select2 = ttk.Label(self.lf_select, text="Data inicial:")
+    #     self.lb_select3 = ttk.Label(self.lf_select, text="Data final:")
+    #     self.lb_select4 = ttk.Label(self.lf_select, text="Médias móveis exponenciais:")
+    #     self.lb_select5 = ttk.Label(self.lf_textos, text=self.instru)
 
-        #COMBOBOX
-        self.emp = pd.read_csv('empresas.csv')
-        self.lista_emp = sorted(self.emp['acao'].tolist())
-        self.cb_acoes = ttk.Combobox(self.lf_select,values=self.lista_emp, width=15,height=5)
+    #     #COMBOBOX
+    #     self.emp = pd.read_csv('empresas.csv')
+    #     self.lista_emp = sorted(self.emp['acao'].tolist())
+    #     self.cb_acoes = ttk.Combobox(self.lf_select,values=self.lista_emp, width=15,height=5)
 
-        #ENTRYS
-        self.st_data1 = tk.StringVar(value='2015-1-1')
-        self.now = dt.datetime.now()
-        self.st_data2 = tk.StringVar(value=str(self.now.year)+'-'+str(self.now.month)+'-'+str(self.now.day))
-        self.en_data1 = ttk.Entry(self.lf_select, width=10, textvariable=self.st_data1)
-        self.en_data2 = ttk.Entry(self.lf_select, width=10, textvariable=self.st_data2)
+    #     #ENTRYS
+    #     self.st_data1 = tk.StringVar(value='2015-1-1')
+    #     self.now = dt.datetime.now()
+    #     self.st_data2 = tk.StringVar(value=str(self.now.year)+'-'+str(self.now.month)+'-'+str(self.now.day))
+    #     self.en_data1 = ttk.Entry(self.lf_select, width=10, textvariable=self.st_data1)
+    #     self.en_data2 = ttk.Entry(self.lf_select, width=10, textvariable=self.st_data2)
 
-        #BOTÃO
-        self.bt_plot = ttk.Button(self.lf_select, text="Gerar gráfico", command=self.calc_graf)
-        self.bt_cal_data1 = ttk.Button(self.lf_select, text="...", command=self.chama_cal_graf1)
-        self.bt_cal_data1.config(width=1)
-        self.bt_cal_data2 = ttk.Button(self.lf_select, text="...", command=self.chama_cal_graf2)
-        self.bt_cal_data2.config(width=1)
+    #     #BOTÃO
+    #     self.bt_plot = ttk.Button(self.lf_select, text="Gerar gráfico", command=self.calc_graf)
+    #     self.bt_cal_data1 = ttk.Button(self.lf_select, text="...", command=self.chama_cal_graf1)
+    #     self.bt_cal_data1.config(width=1)
+    #     self.bt_cal_data2 = ttk.Button(self.lf_select, text="...", command=self.chama_cal_graf2)
+    #     self.bt_cal_data2.config(width=1)
 
-        #CHECK BUTTON
-        self.check_mm90 = tk.IntVar()
-        self.bt_mm90 = tk.Checkbutton(self.lf_select, text="90 dias", variable=self.check_mm90)
-        self.check_mm180 = tk.IntVar()
-        self.bt_mm180 = tk.Checkbutton(self.lf_select, text="180 dias", variable=self.check_mm180)
-        self.check_mm360 = tk.IntVar()
-        self.bt_mm360 = tk.Checkbutton(self.lf_select, text="360 dias", variable=self.check_mm360)
+    #     #CHECK BUTTON
+    #     self.check_mm90 = tk.IntVar()
+    #     self.bt_mm90 = tk.Checkbutton(self.lf_select, text="90 dias", variable=self.check_mm90)
+    #     self.check_mm180 = tk.IntVar()
+    #     self.bt_mm180 = tk.Checkbutton(self.lf_select, text="180 dias", variable=self.check_mm180)
+    #     self.check_mm360 = tk.IntVar()
+    #     self.bt_mm360 = tk.Checkbutton(self.lf_select, text="360 dias", variable=self.check_mm360)
         
-        self.check_yahoo = tk.IntVar()
-        self.bt_yahoo = tk.Checkbutton(self.lf_select, text="yahoo", variable=self.check_yahoo)
+    #     self.check_yahoo = tk.IntVar()
+    #     self.bt_yahoo = tk.Checkbutton(self.lf_select, text="yahoo", variable=self.check_yahoo)
 
-        #LAYOUT
-        self.lf_select.pack(fill=tk.BOTH)#grid(row=0, column=0, padx='5', pady='5')
-        self.lf_textos.pack(fill=tk.BOTH)#grid(row=1, column=0, padx='5', pady='5')
+    #     #LAYOUT
+    #     self.lf_select.pack(fill=tk.BOTH)#grid(row=0, column=0, padx='5', pady='5')
+    #     self.lf_textos.pack(fill=tk.BOTH)#grid(row=1, column=0, padx='5', pady='5')
 
-        self.lb_select1.grid(row=0, column=0, padx='5')
-        self.cb_acoes.grid(row=1, column=0, padx='5', pady='5')
-        self.lb_select2.grid(row=0, column=1, padx='5')
-        self.lb_select3.grid(row=0, column=3, padx='5')
-        self.en_data1.grid(row=1, column=1, padx='5', pady='5')
-        self.bt_cal_data1.grid(row=1, column=2)
-        self.en_data2.grid(row=1, column=3, padx='5', pady='5')
-        self.bt_cal_data2.grid(row=1, column=4)
-        self.bt_plot.grid(row=4, column=4, padx='5', pady='5')
-        self.lb_select4.grid(row=2, column=0, padx='5')
-        self.bt_mm90.grid(row=3, column=0, padx='5')
-        self.bt_mm180.grid(row=3, column=1, padx='5')
-        self.bt_mm360.grid(row=3, column=3, padx='5')
-        self.bt_yahoo.grid(row=0, column=4, padx='5')
+    #     self.lb_select1.grid(row=0, column=0, padx='5')
+    #     self.cb_acoes.grid(row=1, column=0, padx='5', pady='5')
+    #     self.lb_select2.grid(row=0, column=1, padx='5')
+    #     self.lb_select3.grid(row=0, column=3, padx='5')
+    #     self.en_data1.grid(row=1, column=1, padx='5', pady='5')
+    #     self.bt_cal_data1.grid(row=1, column=2)
+    #     self.en_data2.grid(row=1, column=3, padx='5', pady='5')
+    #     self.bt_cal_data2.grid(row=1, column=4)
+    #     self.bt_plot.grid(row=4, column=4, padx='5', pady='5')
+    #     self.lb_select4.grid(row=2, column=0, padx='5')
+    #     self.bt_mm90.grid(row=3, column=0, padx='5')
+    #     self.bt_mm180.grid(row=3, column=1, padx='5')
+    #     self.bt_mm360.grid(row=3, column=3, padx='5')
+    #     self.bt_yahoo.grid(row=0, column=4, padx='5')
         
-        self.lb_select5.grid(row=0, column=0, padx='5')
+    #     self.lb_select5.grid(row=0, column=0, padx='5')
 
-    def chama_cal_graf1(self):
+    # def chama_cal_graf1(self):
 
-        import sys
-        app = QtWidgets.QApplication(sys.argv)
-        Dialog = QtWidgets.QDialog()
-        ui = Ui_Dialog()
-        ui.setupUi(Dialog)
-        Dialog.show()
-        rsp = Dialog.exec_()
-        if rsp == 1:
-            date = ui.envia_data()
+    #     import sys
+    #     app = QtWidgets.QApplication(sys.argv)
+    #     Dialog = QtWidgets.QDialog()
+    #     ui = Ui_Dialog()
+    #     ui.setupUi(Dialog)
+    #     Dialog.show()
+    #     rsp = Dialog.exec_()
+    #     if rsp == 1:
+    #         date = ui.envia_data()
 
-        data = str(date.toPyDate())
+    #     data = str(date.toPyDate())
 
-        self.en_data1.delete(0, tk.END)
-        self.en_data1.insert(0, data)
+    #     self.en_data1.delete(0, tk.END)
+    #     self.en_data1.insert(0, data)
 
-        return
+    #     return
 
-    def chama_cal_graf2(self):
+    # def chama_cal_graf2(self):
 
-        import sys
-        app = QtWidgets.QApplication(sys.argv)
-        Dialog = QtWidgets.QDialog()
-        ui = Ui_Dialog()
-        ui.setupUi(Dialog)
-        Dialog.show()
-        rsp = Dialog.exec_()
-        if rsp == 1:
-            date = ui.envia_data()
+    #     import sys
+    #     app = QtWidgets.QApplication(sys.argv)
+    #     Dialog = QtWidgets.QDialog()
+    #     ui = Ui_Dialog()
+    #     ui.setupUi(Dialog)
+    #     Dialog.show()
+    #     rsp = Dialog.exec_()
+    #     if rsp == 1:
+    #         date = ui.envia_data()
 
-        data = str(date.toPyDate())
+    #     data = str(date.toPyDate())
 
-        self.en_data2.delete(0, tk.END)
-        self.en_data2.insert(0, data)
+    #     self.en_data2.delete(0, tk.END)
+    #     self.en_data2.insert(0, data)
 
-        return
+    #     return
 
-    def calc_graf(self):
+    # def calc_graf(self):
         
-        if self.check_yahoo.get() == 0:
-            #Cria dicionário que irá receber os dataframes com anos nas keys
-            self.dic_base = {}
-            #Loop através dos arquivos com extensão .db na pasta base
-            for filename in os.listdir(os.getcwd()+'/base'):
-                if filename.endswith(".db"):
-                    self.con = sql.connect(os.getcwd()+'\\base\\'+filename)
-                    #ljust completa uma string com espaços em branco, para bater com os 12 caracteres do .db
-                    self.df_temp = pd.read_sql_query("SELECT * FROM hist_bovespa WHERE CODNEG = '"+self.cb_acoes.get().ljust(12)+"'", self.con)
-                    #Adiciona o banco de dados do ano em questão ao dicionário, com o ano como a key
-                    self.dic_base[filename[8:12]] = (self.df_temp)
-                    self.con.commit()
-                    self.con.close()
-            #A linha abaixo faz a concatenação de todos os DataFrames
-            self.df_base = pd.concat(list(self.dic_base.values()))
-            #Coverte a coluna DATA em datetime
-            self.df_base['DATA'] = pd.to_datetime(self.df_base['DATA'], format='%Y-%m-%d %H:%M:%S')
+    #     if self.check_yahoo.get() == 0:
+    #         #Cria dicionário que irá receber os dataframes com anos nas keys
+    #         self.dic_base = {}
+    #         #Loop através dos arquivos com extensão .db na pasta base
+    #         for filename in os.listdir(os.getcwd()+'/base'):
+    #             if filename.endswith(".db"):
+    #                 self.con = sql.connect(os.getcwd()+'\\base\\'+filename)
+    #                 #ljust completa uma string com espaços em branco, para bater com os 12 caracteres do .db
+    #                 self.df_temp = pd.read_sql_query("SELECT * FROM hist_bovespa WHERE CODNEG = '"+self.cb_acoes.get().ljust(12)+"'", self.con)
+    #                 #Adiciona o banco de dados do ano em questão ao dicionário, com o ano como a key
+    #                 self.dic_base[filename[8:12]] = (self.df_temp)
+    #                 self.con.commit()
+    #                 self.con.close()
+    #         #A linha abaixo faz a concatenação de todos os DataFrames
+    #         self.df_base = pd.concat(list(self.dic_base.values()))
+    #         #Coverte a coluna DATA em datetime
+    #         self.df_base['DATA'] = pd.to_datetime(self.df_base['DATA'], format='%Y-%m-%d %H:%M:%S')
 
-        if self.check_yahoo.get() == 1:
-            #Baixa os dados e associa ao DataFrame df
-            self.df_base = data.get_data_yahoo(self.cb_acoes.get()+'.SA',
-                                    start=self.en_data1.get(),
-                                    end=self.en_data2.get())
-            self.df_base['DATA'] = self.df_base.index
-            self.df_base.rename(columns={'Close':'PREULT'}, inplace=True)
+    #     if self.check_yahoo.get() == 1:
+    #         #Baixa os dados e associa ao DataFrame df
+    #         self.df_base = data.get_data_yahoo(self.cb_acoes.get()+'.SA',
+    #                                 start=self.en_data1.get(),
+    #                                 end=self.en_data2.get())
+    #         self.df_base['DATA'] = self.df_base.index
+    #         self.df_base.rename(columns={'Close':'PREULT'}, inplace=True)
         
-        #Médias móveis exponenciais
-        self.df_base['m90_rol'] = self.df_base['PREULT'].ewm(span=90, adjust=False).mean()
-        self.df_base['m180_rol'] = self.df_base['PREULT'].ewm(span=180, adjust=False).mean()
-        self.df_base['m360_rol'] = self.df_base['PREULT'].ewm(span=360, adjust=False).mean()
+    #     #Médias móveis exponenciais
+    #     self.df_base['m90_rol'] = self.df_base['PREULT'].ewm(span=90, adjust=False).mean()
+    #     self.df_base['m180_rol'] = self.df_base['PREULT'].ewm(span=180, adjust=False).mean()
+    #     self.df_base['m360_rol'] = self.df_base['PREULT'].ewm(span=360, adjust=False).mean()
         
-        self.df_base = self.df_base[(self.df_base['DATA'] >= self.en_data1.get()) & (self.df_base['DATA'] <= self.en_data2.get())]
+    #     self.df_base = self.df_base[(self.df_base['DATA'] >= self.en_data1.get()) & (self.df_base['DATA'] <= self.en_data2.get())]
         
-        plt.plot(self.df_base['DATA'], self.df_base['PREULT'])
-        plt.grid()
-        plt.show()
+    #     plt.plot(self.df_base['DATA'], self.df_base['PREULT'])
+    #     plt.grid()
+    #     plt.show()
         
-        if (self.check_mm90.get()) == 1:
-            plt.plot(self.df_base['DATA'], self.df_base['m90_rol'])
-        if (self.check_mm180.get()) == 1:
-            plt.plot(self.df_base['DATA'], self.df_base['m180_rol'])
-        if (self.check_mm360.get()) == 1:
-            plt.plot(self.df_base['DATA'], self.df_base['m360_rol'])
+    #     if (self.check_mm90.get()) == 1:
+    #         plt.plot(self.df_base['DATA'], self.df_base['m90_rol'])
+    #     if (self.check_mm180.get()) == 1:
+    #         plt.plot(self.df_base['DATA'], self.df_base['m180_rol'])
+    #     if (self.check_mm360.get()) == 1:
+    #         plt.plot(self.df_base['DATA'], self.df_base['m360_rol'])
 
-        self.atualiza_scroll()
+    #     self.atualiza_scroll()
 
     # --------------- FUNÇÕES PARA A ABA CALCULADORA DE IR ----------
 
